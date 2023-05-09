@@ -1,7 +1,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "../../features/auth/authSlice";
+import { registerUser } from "../../redux/features/auth/authSlice";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
@@ -56,7 +56,7 @@ const RegisterPage = () => {
                 {...register("email")}
                 className={`block w-full rounded-md p-2 text-white ${
                   isError && "outline outline-1 outline-red-500"
-                } shadow-sm bg-inputBg focus:outline outline-1 outline-primary placeholder:text-gray-400 sm:text-sm sm:leading-6`}
+                } shadow-sm bg-secondary focus:outline outline-1 outline-primary placeholder:text-gray-400 sm:text-sm sm:leading-6`}
               />
               {isError && <small className="text-red-500">{message}</small>}
             </div>
@@ -81,7 +81,7 @@ const RegisterPage = () => {
                 {...register("password")}
                 className={`block w-full rounded-md p-2 text-white ${
                   isError && "outline outline-1 outline-red-500"
-                } shadow-sm bg-inputBg focus:outline outline-1 outline-primary placeholder:text-gray-400 sm:text-sm sm:leading-6`}
+                } shadow-sm bg-secondary focus:outline outline-1 outline-primary placeholder:text-gray-400 sm:text-sm sm:leading-6`}
               />
             </div>
           </div>

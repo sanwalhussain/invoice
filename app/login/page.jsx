@@ -1,16 +1,18 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
-import { signIn } from "next-auth/react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { BeatLoader } from "react-spinners";
+import { loginUser } from "../../redux/features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 const LoginPage = () => {
-  const [isLoading, setLoading] = useState(false);
-  const [message, setMessage] = useState(null);
-  const [isError, setError] = useState(false);
   const { data } = useSession();
   const { push } = useRouter();
+
+  const dispatch = useDispatch();
+
+  const { isError, isLoading, message } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (data && data.user) {
@@ -21,32 +23,7 @@ const LoginPage = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
-    setLoading(true);
-    setError(false);
-    // login user with error handling
-    await signIn("credentials", {
-      callbackUrl: "/invoice",
-      email: data.email,
-      password: data.password,
-      redirect: false,
-    }).then((data) => {
-      if (data) {
-        setLoading(false);
-      }
-
-      if (data.error) {
-        // display alert
-        setError(true);
-        // set error message
-        setMessage(data.error);
-      }
-      if (data.ok) {
-        // remove alert
-        setError(false);
-        //remove error message
-        setMessage(null);
-      }
-    });
+    dispatch(loginUser(data));
   };
 
   return (
@@ -81,7 +58,7 @@ const LoginPage = () => {
                 {...register("email")}
                 className={`block w-full rounded-md p-2 text-white ${
                   isError && "outline outline-1 outline-red-500"
-                } shadow-sm bg-inputBg focus:outline outline-1 outline-primary placeholder:text-gray-400 sm:text-sm sm:leading-6`}
+                } shadow-sm bg-secondary focus:outline outline-1 outline-primary placeholder:text-gray-400 sm:text-sm sm:leading-6`}
               />
               {isError && <small className="text-red-500">{message}</small>}
             </div>
@@ -106,7 +83,7 @@ const LoginPage = () => {
                 {...register("password")}
                 className={`block w-full rounded-md p-2 text-white ${
                   isError && "outline outline-1 outline-red-500"
-                } shadow-sm bg-inputBg focus:outline outline-1 outline-primary placeholder:text-gray-400 sm:text-sm sm:leading-6`}
+                } shadow-sm bg-secondary focus:outline outline-1 outline-primary placeholder:text-gray-400 sm:text-sm sm:leading-6`}
               />
             </div>
           </div>

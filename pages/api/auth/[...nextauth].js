@@ -23,6 +23,7 @@ export default NextAuth({
   },
   session: {
     strategy: "jwt",
+    maxAge: 1800,
   },
   providers: [
     CredentialsProvider({

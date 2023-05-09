@@ -16,8 +16,20 @@ const register = async (userData) => {
   }
 };
 
+// Login user
+const login = async (userData) => {
+  const data = await signIn("credentials", {
+    callbackUrl: "/invoice",
+    email: userData.email,
+    password: userData.password,
+    redirect: false,
+  }).then((data) => data);
+  return data;
+};
+
 const authService = {
   register,
+  login,
 };
 
 export default authService;

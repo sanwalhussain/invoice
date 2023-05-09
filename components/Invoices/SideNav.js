@@ -15,8 +15,12 @@ const SideNav = () => {
           className="mb-10 cursor-pointer"
           src={iconSun}
         />
-        <div className="border-t w-full border-bTop  pt-5">
-          <Image src={iconAvatar} className="rounded-full w-10 mx-auto" />
+        <div className="border-t w-full border-bTop pt-5">
+          <Image
+            alt="avatar"
+            src={iconAvatar}
+            className="rounded-full w-10 mx-auto"
+          />
         </div>
       </div>
     </div>
