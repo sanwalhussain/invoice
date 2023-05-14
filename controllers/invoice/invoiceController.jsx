@@ -96,19 +96,51 @@ export const updateInvoice = async (req, res) => {
 
   // Check for user
   if (!user) {
-    res.status(401);
-    throw new Error("User not found");
+    return res.status(404).json({ message: "User not found" });
   }
 
-  // Make sure the logged in user matches the goal user
-  if (invoice.user.toString() !== req.user.id) {
-    res.status(401);
-    throw new Error("User not authorized");
+  // Make sure the logged in user matches the invoice user
+  if (invoice.user.toString() !== user) {
+    return res.status(401).json({ message: "User not authorized" });
   }
 
-  const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {
+  const updatedInvoice = await Invoice.findByIdAndUpdate(id, req.body, {
     new: true,
   });
 
-  res.status(200).json(updatedGoal);
+  res.status(200).json(updatedInvoice);
+};
+
+export const markPaid = async (req, res) => {
+  dbConnect();
+
+  const { id, user } = req.query;
+
+  const { status } = req.body;
+
+  const invoice = await Invoice.findById(id);
+
+  if (!invoice) {
+    return res.status(404).json({ message: "Invoice not found" });
+  }
+
+  // Check for user
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  // Make sure the logged in user matches the invoice user
+  if (invoice.user.toString() !== user) {
+    return res.status(401).json({ message: "User not authorized" });
+  }
+
+  const updatedInvoice = await Invoice.findByIdAndUpdate(
+    id,
+    { status },
+    {
+      new: true,
+    }
+  );
+
+  res.status(200).json(updatedInvoice);
 };
