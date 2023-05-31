@@ -1,6 +1,6 @@
 "use client";
-import InvoiceContainer from "@/components/invoices/InvoiceContainer";
-import SideNav from "@/components/invoices/SideNav";
+import InvoiceContainer from "@/components/home/InvoiceContainer";
+import SideNav from "@/components/home/SideNav";
 const page = () => {
   return (
     <div className="bg-background h-screen">

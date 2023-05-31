@@ -28,8 +28,8 @@ module.exports = {
         status_green_light: "#1F2B3F",
         logoLight: "#9277FF",
         bTop: "#494E6E",
+        dropdownBg: "#252945",
       },
     },
   },
-  plugins: [],
 };

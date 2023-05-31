@@ -21,6 +21,7 @@ const RegisterPage = () => {
   }, [data]);
 
   const dispatch = useDispatch();
+  // call register user function on submit
   const onSubmit = (data) => {
     dispatch(registerUser(data));
   };

@@ -18,7 +18,7 @@ const InvoiceHeader = () => {
           <p>Filter by status</p>
           <Image src={Chevron} alt="filter-dropdown" className="ml-4" />
         </div>
-        <InvoiceDropdown />
+        {/* <InvoiceDropdown /> */}
         <button className="btn bg-primary text-white py-2 px-3 rounded-3xl text-sm flex items-center transition hover:bg-logoLight">
           <div className="bg-white rounded-full flex items-center justify-center p-2 mr-2">
             <Image alt="icon-plus" src={iconPlus} />
