@@ -29,6 +29,7 @@ module.exports = {
         logoLight: "#9277FF",
         bTop: "#494E6E",
         dropdownBg: "#252945",
+        brightRed: "#EC5757",
       },
     },
   },

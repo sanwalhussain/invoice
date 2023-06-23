@@ -2,7 +2,7 @@ import Image from "next/image";
 import iconArrowRight from "../assets/icon-arrow-right.svg";
 const InvoiceCard = () => {
   return (
-    <div className="outline outline-0 cursor-pointer bg-secondary flex py-4 rounded-md items-center mb-4 hover:outline-1 outline-primary">
+    <div className="outline outline-0 cursor-pointer bg-secondary flex py-4 rounded-lg items-center mb-4 hover:outline-1 outline-primary">
       <p className="text-sm text-white ml-7">#RT3080</p>
       <p className="text-sm text-light ml-12 font-light">Due 19 Aug 2021</p>
       <p className="text-sm text-white ml-12 font-light">Jensen Huang</p>
