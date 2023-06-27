@@ -2,7 +2,7 @@ import InvoiceDetailsContainer from "@/components/details/InvoiceDetailsContaine
 import React from "react";
 
 const page = () => {
-  return <div className="bg-background h-screen">
+  return <div className="bg-background h-full pb-5">
     <InvoiceDetailsContainer />
   </div>;
 };

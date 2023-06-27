@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       width: {
         nav_width: "103px",
-        container: "750px",
+        container: "730px",
       },
       height: {
         nav_height: "103px",
@@ -30,6 +30,14 @@ module.exports = {
         bTop: "#494E6E",
         dropdownBg: "#252945",
         brightRed: "#EC5757",
+        hashtagColor: "#888EB0",
+        vBlack: "#0C0E16",
+        btnHoverPrimary: "#7E88C3",
+        btnHoverRed: "#FF9797",
+        btnHoverPurple: "#9277FF",
+      },
+      dropShadow: {
+        new: "0px 10px 10px -10px rgba(72,84,159,0.104)",
       },
     },
   },

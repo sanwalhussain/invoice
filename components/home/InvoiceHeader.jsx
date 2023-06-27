@@ -14,12 +14,12 @@ const InvoiceHeader = () => {
       </div>
 
       <div className="flex items-center">
-        <div className="text-sm text-white flex items-center mr-12 cursor-pointer">
+        <div className="text-xs text-white flex items-center mr-12 cursor-pointer">
           <p>Filter by status</p>
           <Image src={Chevron} alt="filter-dropdown" className="ml-4" />
         </div>
         {/* <InvoiceDropdown /> */}
-        <button className="btn bg-primary text-white py-2 px-3 rounded-3xl text-sm flex items-center transition hover:bg-logoLight">
+        <button className="btn bg-primary text-white py-2 px-3 rounded-3xl text-xs flex items-center transition hover:bg-logoLight">
           <div className="bg-white rounded-full flex items-center justify-center p-2 mr-2">
             <Image alt="icon-plus" src={iconPlus} />
           </div>
