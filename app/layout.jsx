@@ -1,9 +1,9 @@
 "use client";
 import "./globals.css";
-import { Poppins } from "next/font/google";
+import { League_Spartan } from "next/font/google";
 import { Providers } from "./provider";
 import { SessionProvider } from "next-auth/react";
-const poppins = Poppins({
+const LeagueSpartan = League_Spartan({
   weight: ["300", "400", "600"],
   subsets: ["latin"],
 });
@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={LeagueSpartan.className}>
         <SessionProvider>
           <Providers> {children}</Providers>
         </SessionProvider>

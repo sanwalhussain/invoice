@@ -47,7 +47,7 @@ const InvoiceDetailsBody = () => {
         <table className="w-full">
           <thead>
             <tr>
-              <th className="text-start text-light font-light pb-6">
+              <th className="text-start text-light font-light pb-6 w-80">
                 Item Name
               </th>
               <th className="text-start text-light font-light pb-6">QTY.</th>
@@ -58,13 +58,13 @@ const InvoiceDetailsBody = () => {
           <tbody className="text-white font-semibold">
             <tr>
               <td className="pb-6">Banner Design</td>
-              <td className="pb-6 text-light">1</td>
+              <td className="pb-6 text-light pl-2">1</td>
               <td className="text-end pb-6 text-light">£ 156.00</td>
               <td className="text-end pb-6">£ 156.00</td>
             </tr>
             <tr>
               <td>Email Design</td>
-              <td className="text-light">2</td>
+              <td className="text-light pl-2">2</td>
               <td className="text-end text-light">£ 200.00</td>
               <td className="text-end">£ 200.00</td>
             </tr>

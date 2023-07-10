@@ -64,10 +64,11 @@ export const authSlice = createSlice({
         state.isError = false;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        action.payload.error &&
-          ((state.isLoading = false),
-          (state.isError = true),
-          (state.message = action.payload.error));
+        action.payload.error
+          ? ((state.isLoading = false),
+            (state.isError = true),
+            (state.message = action.payload.error))
+          : (state.isLoading = false);
       });
   },
 });

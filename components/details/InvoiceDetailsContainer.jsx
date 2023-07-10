@@ -5,7 +5,7 @@ import InvoiceDetailsBody from "./InvoiceDetailsBody";
 
 const InvoiceDetailsContainer = () => {
   return (
-    <div className="w-container mx-auto pt-20">
+    <div className="w-container mx-auto py-20">
       <ReturnToHome />
       <InvoiceDetailsHeader />
       <InvoiceDetailsBody />
