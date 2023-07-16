@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import {
   CalendarIcon,
   ChevronDownIcon,
@@ -7,10 +8,36 @@ import {
 } from "@heroicons/react/24/solid";
 import InvoiceOverlay from "./InvoiceOverlay";
 
-const InvoiceCreateForm = () => {
+const InvoiceCreateForm = (): JSX.Element => {
+  const [invoice, setInvoice] = useState<any>({
+    description: "",
+    invoiceDate: Date.now(),
+    clientName: "",
+    clientEmail: "",
+    status: "",
+    senderAddress: {
+      street: "",
+      city: "",
+      postcode: "",
+      country: "",
+    },
+    clientAddress: {
+      street: "",
+      city: "",
+      postcode: "",
+      country: "",
+    },
+    dueDate: "",
+    items: [],
+    total: "",
+  });
+
+  const [paymentTerms, setPaymentTerms] = useState("");
+  const [items, setItems] = useState("");
   return (
     <>
       <InvoiceOverlay />
+
       <div className="fixed top left-24 bg-background w-formWidth h-full p-14 rounded-navRadius overflow-y-scroll z-40">
         <h2 className="text-white text-3xl font-bold mb-10">New Invoice</h2>
         <div className="mb-11">
@@ -21,6 +48,15 @@ const InvoiceCreateForm = () => {
             </label>
             <input
               type="text"
+              onChange={(e) =>
+                setInvoice((prevState) => ({
+                  ...prevState,
+                  senderAddress: {
+                    ...prevState.senderAddress,
+                    street: e.target.value,
+                  },
+                }))
+              }
               className="w-full outline-0 bg-inputBg py-3 px-4 text-white text-base rounded mb-6 font-semibold border border-customBorderColor"
             />
           </div>
@@ -30,6 +66,15 @@ const InvoiceCreateForm = () => {
                 City
               </label>
               <input
+                onChange={(e) =>
+                  setInvoice((prevState) => ({
+                    ...prevState,
+                    senderAddress: {
+                      ...prevState.senderAddress,
+                      city: e.target.value,
+                    },
+                  }))
+                }
                 type="text"
                 className="w-full outline-0 bg-inputBg py-3 px-4 text-white text-base font-semibold rounded semiborder border-customBorderColor"
               />
@@ -40,6 +85,15 @@ const InvoiceCreateForm = () => {
               </label>
               <input
                 type="text"
+                onChange={(e) =>
+                  setInvoice((prevState) => ({
+                    ...prevState,
+                    senderAddress: {
+                      ...prevState.senderAddress,
+                      postcode: e.target.value,
+                    },
+                  }))
+                }
                 className="w-full outline-0 bg-inputBg py-3 px-4 text-white text-base rounded font-semibold semiborder border-customBorderColor"
               />
             </div>
@@ -49,6 +103,15 @@ const InvoiceCreateForm = () => {
               </label>
               <input
                 type="text"
+                onChange={(e) =>
+                  setInvoice((prevState) => ({
+                    ...prevState,
+                    senderAddress: {
+                      ...prevState.senderAddress,
+                      country: e.target.value,
+                    },
+                  }))
+                }
                 className="w-full outline-0 bg-inputBg py-3 px-4 text-white text-base rounded font-semibold semiborder border-customBorderColor"
               />
             </div>
@@ -124,7 +187,7 @@ const InvoiceCreateForm = () => {
               className="w-[17.75rem] outline-0 bg-inputBg py-3 px-4 text-white text-base rounded font-semibold border border-customBorderColor cursor-pointer"
               value="26/07/2023"
             />
-            <CalendarIcon className="h-5 w-5 absolute right-[0.8rem] top-10 text-[#7E88C3]  " />
+            <CalendarIcon className="h-5 w-5 absolute right-[0.8rem] top-11 text-[#7E88C3]  " />
           </div>
 
           <div className="relative">
@@ -137,7 +200,7 @@ const InvoiceCreateForm = () => {
               className="w-[17.75rem] outline-0 bg-inputBg py-3 px-4 text-white text-base rounded font-semibold border border-customBorderColor cursor-pointer"
               value="Net 30 Days"
             />
-            <ChevronDownIcon className="text-primary h-4 w-4 absolute right-0 top-11 right-[0.75rem]" />
+            <ChevronDownIcon className="text-primary h-4 w-4 absolute right-0 top-12 right-[0.75rem]" />
           </div>
         </div>
         <div>
@@ -183,7 +246,7 @@ const InvoiceCreateForm = () => {
                 value="156.00"
                 className="w-full outline-0 bg-transparent py-3 text-white text-base rounded font-semibold"
               />
-              <TrashIcon className="h-5 w-5 text-white absolute right-0 top-10 text-[#888EB0] cursor-pointer" />
+              <TrashIcon className="h-5 w-5 text-white absolute right-0 top-11 text-[#888EB0] cursor-pointer hover:text-brightRed transition" />
             </div>
           </div>
           <button className="w-full bg-inputBg rounded-3xl p-3 font-light text-light font-semibold text-base">
@@ -193,14 +256,14 @@ const InvoiceCreateForm = () => {
             Add New Item
           </button>
           <div className="flex justify-between mt-12">
-            <button className="text-base bg-white py-3 px-6 rounded-3xl text-[#7E88C3] font-semibold">
+            <button className="text-base bg-white py-3 px-6 rounded-3xl text-[#7E88C3] font-semibold  ">
               Discard
             </button>
             <div>
-              <button className="text-base bg-[#373B53] py-3 px-6 rounded-3xl text-light font-semibold mr-2">
+              <button className="text-base bg-[#373B53] py-3 px-6 rounded-3xl text-light font-semibold mr-2 hover:bg-secondary transition">
                 Save as Draft
               </button>
-              <button className="text-base bg-primary py-3 px-6 rounded-3xl text-white font-semibold">
+              <button className="text-base bg-primary py-3 px-6 rounded-3xl text-white font-semibold hover:bg-logoLight transition">
                 Save & Send
               </button>
             </div>

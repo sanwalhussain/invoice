@@ -47,7 +47,7 @@ export const createInvoice = async (req, res) => {
   const invoice = await Invoice.create({
     user,
     description,
-    paymentDue,
+    dueDate,
     clientName,
     clientEmail,
     status,
